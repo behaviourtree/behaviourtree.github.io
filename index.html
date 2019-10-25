@@ -26,21 +26,6 @@
 <body>
 <div id="layout">
     <div id="jsmind_nav">
-        <div>1. Open</div>
-        <ol type='A'>
-            <li><button onclick="open_json();">open example</button></li>
-            <li><button onclick="open_ajax();">open remote</button></li>
-            <li><button onclick="prompt_info('see 6.Multi Format');">open local file</button></li>
-            <li><button onclick="prompt_info('see 6.Multi Format');">save local file</button></li>
-            <li><button onclick="screen_shot();">screenshot</button></li>
-        </ol>
-        </ol>
-        <div>2. Select &amp; Toggle</div>
-        <ol type='A'>
-            <li><button onclick="select_node();">select a node</button></li>
-            <li><button onclick="prompt_info('please try click a node');">try click a node</button></li>
-            <li><button onclick="show_selected();">get the selected</button></li>
-        </ol>
         <div>3. Edit</div>
         <ol type='A'>
             <li><button onclick="toggle_editable(this);">disable editable</button></li>
@@ -208,7 +193,7 @@
         var mind_data = _jm.get_data();
         var mind_name = mind_data.meta.name;
         var mind_str = jsMind.util.json.json2string(mind_data);
-        jsMind.util.file.save(mind_str,'text/jsmind',mind_name+'.jm');
+        jsMind.util.file.save(mind_str,'text/jsmind',mind_name+'.json');
     }
     
     function open_file(){
@@ -257,7 +242,7 @@
         if(!selected_node){prompt_info('please select a node first.');return;}
 
         var nodeid = jsMind.util.uuid.newid();
-        var topic = '* Node_'+nodeid.substr(nodeid.length-6)+' *';
+        var topic = 'Node_'+nodeid.substr(nodeid.length-6);
         var node = _jm.add_node(selected_node, nodeid, topic);
     }
 
@@ -452,7 +437,7 @@
         var mind_data = _jm.get_data('node_array');
         var mind_name = mind_data.meta.name;
         var mind_str = jsMind.util.json.json2string(mind_data);
-        jsMind.util.file.save(mind_str,'text/jsmind',mind_name+'.jm');
+        jsMind.util.file.save(mind_str,'text/jsmind',mind_name+'.json');
     }
     
     function open_nodearray(){
