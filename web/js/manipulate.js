@@ -1,21 +1,54 @@
 // Manipulation functions 
 
+// Keys on press
 document.onkeydown = checkKey;
 
 function checkKey(e) {
    e = e || window.event;
 
+   // Add node
    if (e.keyCode == '65') {
       if (!_jm.view.is_editing()) {
          add_node()
       }
    }
+   // Remove node
    else if (e.keyCode == '68') {
       if (!_jm.view.is_editing()) {
          remove_node()
       }
    }
+   // Zoom in
+   else if (e.keyCode == '90') {
+      if (!_jm.view.is_editing()) {
+         zoomIn()
+      }
+   }
+   // Zoom out
+   else if (e.keyCode == '88') {
+      if (!_jm.view.is_editing()) {
+         zoomOut()
+      }
+   }
 }
+// End keys on press
+
+// Collapsable menu
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+// End collapsable menu
 
 var _jm = null;
 function open_empty() {
@@ -145,6 +178,57 @@ function add_node() {
    var node = _jm.add_node(selected_node, nodeid, topic);
 }
 
+// Behaviour Tree Nodes
+function add_sequence() {
+   var selected_node = _jm.get_selected_node(); // as parent of new node
+
+   var nodeid = jsMind.util.uuid.newid();
+   var topic = 'name:seq';
+   var node = _jm.add_node(selected_node, nodeid, topic);
+}
+
+function add_selector() {
+   var selected_node = _jm.get_selected_node(); // as parent of new node
+
+   var nodeid = jsMind.util.uuid.newid();
+   var topic = 'name:sel';
+   var node = _jm.add_node(selected_node, nodeid, topic);
+}
+
+function add_chooser() {
+   var selected_node = _jm.get_selected_node(); // as parent of new node
+
+   var nodeid = jsMind.util.uuid.newid();
+   var topic = 'name:cho';
+   var node = _jm.add_node(selected_node, nodeid, topic);
+}
+
+function add_parallel() {
+   var selected_node = _jm.get_selected_node(); // as parent of new node
+
+   var nodeid = jsMind.util.uuid.newid();
+   var topic = 'name:par';
+   var node = _jm.add_node(selected_node, nodeid, topic);
+}
+
+function add_action() {
+   var selected_node = _jm.get_selected_node(); // as parent of new node
+
+   var nodeid = jsMind.util.uuid.newid();
+   var topic = 'name(args*)';
+   var node = _jm.add_node(selected_node, nodeid, topic);
+}
+
+function add_label() {
+   var selected_node = _jm.get_selected_node(); // as parent of new node
+
+   var nodeid = jsMind.util.uuid.newid();
+   var topic = 'name';
+   var node = _jm.add_node(selected_node, nodeid, topic);
+}
+
+// End Behaviour Tree Nodes
+
 var imageChooser = document.getElementById('image-chooser');
 
 imageChooser.addEventListener('change', function (event) {
@@ -178,13 +262,6 @@ function add_image_node() {
    imageChooser.click();
 }
 
-function modify_node() {
-   var selected_id = get_selected_nodeid();
-
-   // modify the topic
-   _jm.update_node(selected_id, '--- modified ---');
-}
-
 function move_to_first() {
    var selected_id = get_selected_nodeid();
 
@@ -197,39 +274,10 @@ function move_to_last() {
    _jm.move_node(selected_id, '_last_');
 }
 
-function move_node() {
-   // move a node before another
-   _jm.move_node('other', 'open');
-}
-
 function remove_node() {
    var selected_id = get_selected_nodeid();
 
    _jm.remove_node(selected_id);
-}
-
-function change_text_font() {
-   var selected_id = get_selected_nodeid();
-
-   _jm.set_node_font_style(selected_id, 28);
-}
-
-function change_text_color() {
-   var selected_id = get_selected_nodeid();
-
-   _jm.set_node_color(selected_id, null, '#000');
-}
-
-function change_background_color() {
-   var selected_id = get_selected_nodeid();
-
-   _jm.set_node_color(selected_id, '#eee', null);
-}
-
-function change_background_image() {
-   var selected_id = get_selected_nodeid();
-
-   _jm.set_node_background_image(selected_id, 'ant.png', 100, 100);
 }
 
 function set_theme(theme_name) {
@@ -266,23 +314,6 @@ function toggle_editable(btn) {
    }
 }
 
-
-function resize_jsmind() {
-   _jm.resize();
-}
-
-function expand() {
-   var selected_id = get_selected_nodeid();
-
-   _jm.expand_node(selected_id);
-}
-
-function collapse() {
-   var selected_id = get_selected_nodeid();
-
-   _jm.collapse_node(selected_id);
-}
-
 function toggle() {
    var selected_id = get_selected_nodeid();
 
@@ -291,14 +322,6 @@ function toggle() {
 
 function expand_all() {
    _jm.expand_all();
-}
-
-function expand_to_level2() {
-   _jm.expand_to_depth(2);
-}
-
-function expand_to_level3() {
-   _jm.expand_to_depth(3);
 }
 
 function collapse_all() {
