@@ -6,10 +6,14 @@ function checkKey(e) {
    e = e || window.event;
 
    if (e.keyCode == '65') {
-      add_node()
+      if (!_jm.view.is_editing()) {
+         add_node()
+      }
    }
    else if (e.keyCode == '68') {
-      remove_node()
+      if (!_jm.view.is_editing()) {
+         remove_node()
+      }
    }
 }
 
