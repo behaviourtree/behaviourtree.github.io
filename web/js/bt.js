@@ -1,10 +1,4 @@
-/*
- * Released under BSD License
- * Copyright (c) 2014-2016 hizzgdev@163.com
- *
- * Project Home:
- *   https://github.com/hizzgdev/jsmind/
- */
+// Main functions
 
 ; (function ($w) {
   'use strict';
@@ -235,7 +229,7 @@
                   var children = parent_node.children;
                   var children_len = children.length;
                   var r = 0;
-                  for (var i = 0; i < children_len; i++) { if (children[i].direction === jm.direction.left) { r--; } else { r++; } }
+                  for (var i = 0; i < children_len; i++) { if (children[i].direction === jm.direction.left) { r--; } }
                   d = (children_len > 1 && r > 0) ? jm.direction.left : jm.direction.right
               } else {
                   d = (direction != jm.direction.left) ? jm.direction.right : jm.direction.left;

@@ -1,10 +1,3 @@
-/*
- * Released under BSD License
- * Copyright (c) 2014-2015 hizzgdev@163.com
- * 
- * Project Home:
- *   https://github.com/hizzgdev/jsmind/
- */
 
 (function ($w) {
     'use strict';
@@ -136,8 +129,7 @@
 
             var ns, nl;
 
-            var direct = (sx + sw / 2) >= root_x ?
-                jsMind.direction.right : jsMind.direction.left;
+            var direct = jsMind.direction.right
             var nodes = this.jm.mind.nodes;
             var node = null;
             var min_distance = Number.MAX_VALUE;
