@@ -1,1 +1,120 @@
-Hello World
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Behaviour Tree</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script type="text/javascript" src="web/js/bt.js"></script>
+  <script type="text/javascript" src="web/js/bt.draggable.js"></script>
+  <script type="text/javascript" src="web/js/bt.screenshot.js"></script>
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="web/style/style.css" />
+</head>
+
+<body>
+  <div id="layout">
+
+    <div id="navArea">
+      <div class="navareaexp">
+        <div><b>Behaviour Tree</b></div><br>
+        <button onclick="add_sequence();">add sequence</button><br>
+        <button onclick="add_selector();">add selector</button><br>
+        <button onclick="add_chooser();">add chooser</button><br>
+        <button onclick="add_parallel();">add parallel</button><br>
+        <button onclick="add_action();">add action</button><br>
+        <button onclick="add_label();">add label</button><br>
+        <button onclick="remove_node();">remove node</button><br>
+      </div>
+
+      <div class="navareaexp">
+        <div><b>Keyboard shortcuts</b></div>
+        <div>a - Add node</div>
+        <div>d - Delete node</div>
+        <div>z - Zoom in</div>
+        <div>x - Zoom out</div>
+        <br>
+        <div><b>Nodes</b></div>
+        <div>name:seq - Sequence</div>
+        <div>name:sel - Selector</div>
+        <div>name:cho - Chooser</div>
+        <div>name:par - Parallel</div>
+        <div>name(arg) - Action</div>
+        <div>name - Label</div>
+      </div>
+
+      <button class="collapsible"><b>Settings +</b></button>
+      <div class="navareacol">
+        <br>
+
+        <div>Edit</div>
+        <button onclick="toggle_editable(this);">disable editable</button><br>
+        <button onclick="add_node();">add a node</button><br>
+        <button onclick="add_image_node();">add a image node</button><br>
+        <button onclick="move_to_first();">move to first</button><br>
+        <button onclick="move_to_last();">move to last</button><br>
+        <button onclick="remove_node();">remove node</button><br>
+        <br>
+
+        <div>Theme</div>
+        <select onchange="set_theme(this.value);">
+          <option value="">default</option>
+          <option value="primary">primary</option>
+          <option value="warning">warning</option>
+          <option value="danger">danger</option>
+          <option value="success">success</option>
+          <option value="info">info</option>
+          <option value="greensea" selected="selected">greensea</option>
+          <option value="nephrite">nephrite</option>
+          <option value="belizehole">belizehole</option>
+          <option value="wisteria">wisteria</option>
+          <option value="asphalt">asphalt</option>
+          <option value="orange">orange</option>
+          <option value="pumpkin">pumpkin</option>
+          <option value="pomegranate">pomegranate</option>
+          <option value="clouds">clouds</option>
+          <option value="asbestos">asbestos</option>
+        </select>
+        <br><br>
+
+        <div>Adjusting</div>
+        <button onclick="toggle();">toggle node</button><br>
+        <button onclick="expand_all();">expand all</button><br>
+        <button onclick="collapse_all();">collapse all</button><br>
+        <button style="width:67px" onclick="zoomIn();">Zoom in</button>
+        <button style="width:67px" onclick="zoomOut();">Zoom out</button><br>
+        <br>
+
+        <div>Node tree</div>
+        <button onclick="show_data();">show data</button><br>
+        <button onclick="save_file();">save file</button><br>
+        <input id="file_input" class="file_input" type="file" /><br>
+        <button onclick="open_file();">open file</button><br>
+        <br>
+
+        <div>Node array</div>
+        <button onclick="get_nodearray_data();">show data</button><br>
+        <button onclick="save_nodearray_file();">save file</button><br>
+        <input id="file_input_nodearray" class="file_input" type="file" /><br>
+        <button onclick="open_nodearray();">open file</button><br>
+      </div>
+
+      <button class="collapsible"><b>Advanced +</b></button>
+      <div class="navareacol">
+        <br>
+
+        <div>Advanced Options</div>
+      </div>
+    </div>
+
+    <div id="btArea"></div>
+    <div style="display:none">
+      <input class="file" type="file" id="image-chooser" accept="image/*" />
+    </div>
+
+  </div>
+  <script type="text/javascript" src="web/js/manipulate.js"></script>
+</body>
+
+</html>
