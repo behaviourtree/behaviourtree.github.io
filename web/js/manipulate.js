@@ -6,10 +6,28 @@ document.onkeydown = checkKey;
 function checkKey(e) {
    e = e || window.event;
 
-   // Add node
+   // Add sequence
+   if (e.keyCode == '83') {
+      if (!_jm.view.is_editing()) {
+         add_sequence()
+      }
+   }
+   // Add selector
+   if (e.keyCode == '69') {
+      if (!_jm.view.is_editing()) {
+         add_selector()
+      }
+   }
+   // Add action
    if (e.keyCode == '65') {
       if (!_jm.view.is_editing()) {
-         add_node()
+         add_action()
+      }
+   }
+   // Add label
+   if (e.keyCode == '76') {
+      if (!_jm.view.is_editing()) {
+         add_label()
       }
    }
    // Remove node
