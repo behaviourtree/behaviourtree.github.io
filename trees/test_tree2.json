@@ -1,0 +1,24 @@
+{    
+    "name": "TestTree2",
+    "root": 
+    {
+        "name": "What to do?",
+        "type": "Selector",
+        "children":
+        [
+            {
+                "name": "Hungry?",
+                "type": "IsHungry"
+            },
+            {
+                "name": "Banana procedure",
+                "type": "Selector",
+                "children":
+                [
+                    { "name": "Get Banana", "type": "BananaGetter" },
+                    { "name": "Eat banana!", "type": "BananaEater" }
+                ]
+            }
+        ]
+    }
+}

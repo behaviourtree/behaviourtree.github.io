@@ -1,0 +1,13 @@
+{    
+    "name": "MyFirstTree",
+    "root": 
+    {
+        "name": "What to do?",
+        "type": "Selector",
+        "children":
+        [
+            { "name": "Hungry?",     "type": "IsHungry" },
+            { "name": "Eat banana!", "type": "BananaEater" }
+        ]
+    }
+}
