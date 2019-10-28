@@ -1,4 +1,4 @@
-{    
+{
     "name": "MyFirstTree",
 
     "root": 
@@ -10,5 +10,12 @@
             { "name": "Hungry?",     "type": "IsHungry" },
             { "name": "Eat banana!", "type": "BananaEater" }
         ]
+    },
+
+    "types":
+    {
+        "Sequence": "py_trees.composites",
+        "IsHungry": "py_monkey",
+        "BananaEater": "py_monkey.banana"
     }
 }
