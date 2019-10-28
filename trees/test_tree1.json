@@ -1,9 +1,10 @@
 {    
     "name": "MyFirstTree",
+
     "root": 
     {
         "name": "What to do?",
-        "type": "Selector",
+        "type": "Sequence",
         "children":
         [
             { "name": "Hungry?",     "type": "IsHungry" },
